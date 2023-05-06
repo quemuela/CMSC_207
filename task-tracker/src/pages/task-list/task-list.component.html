@@ -1,0 +1,47 @@
+<div class="parent">  
+  <div class="child">
+    <h2>TODO</h2>
+    <ul>
+      <li *ngFor="let selectedTask of taskList | taskStatusFilter: filterTodo">        
+          <div class="column" (click)="onSelect(selectedTask)">
+              <label class="column-list-contents">Title: {{selectedTask.title}}</label>              
+              <label class="column-list-contents">Assignee: {{selectedTask.assignee}}</label>              
+              <label class="column-list-contents">Start Date: {{selectedTask.startDate}}</label>
+              <label class="column-list-contents">End Date: {{selectedTask.endDate}}</label>                          
+          </div>
+      </li>
+    </ul>
+  </div>
+  <div class="child">
+    <h2>IN PROGRESS</h2>
+    <ul>
+      <li *ngFor="let selectedTask of taskList | taskStatusFilter: filterInProgress">
+        <div class="column" (click)="onSelect(selectedTask)">
+          <label class="column-list-contents">Title: {{selectedTask.title}}</label>              
+          <label class="column-list-contents">Assignee: {{selectedTask.assignee}}</label>              
+          <label class="column-list-contents">Start Date: {{selectedTask.startDate}}</label>
+          <label class="column-list-contents">End Date: {{selectedTask.endDate}}</label>                          
+      </div>
+      </li>
+    </ul>
+  </div>
+  <div class="child">
+    <h2>DONE</h2>
+    <ul>
+      <li *ngFor="let selectedTask of taskList | taskStatusFilter: filterDone">
+        <div class="column" (click)="onSelect(selectedTask)">
+          <label class="column-list-contents">Title: {{selectedTask.title}}</label>              
+          <label class="column-list-contents">Assignee: {{selectedTask.assignee}}</label>              
+          <label class="column-list-contents">Start Date: {{selectedTask.startDate}}</label>
+          <label class="column-list-contents">End Date: {{selectedTask.endDate}}</label>                          
+      </div>
+      </li>
+    </ul>
+  </div>
+  <div class="child">
+    <div class="child">
+      <h2 (click)="newTask()">NEW TASK</h2>    
+      <app-task-detail [task]="selectedTask" (refreshEvent)="refreshEventHandler($event)"></app-task-detail>    
+    </div>
+  </div>  
+</div>

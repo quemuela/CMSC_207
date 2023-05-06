@@ -1,0 +1,59 @@
+<div *ngIf="task">
+  <form [formGroup]="detailForm" (ngSubmit)="OnSubmit()">
+    <div class="column-form">
+      <label for="title">Title</label>      
+      <input type="hidden" id="id" name="id" formControlName="id" required minlength="10" [ngModel]="task.id">
+      <input type="text" id="title" name="title" formControlName="title" required minlength="10" [ngModel]="task.title">
+      <div class="error" *ngIf="f?.['title']?.invalid">
+        <div class="error" *ngIf="f?.['title']?.errors?.['required']">
+          Field required
+        </div>
+        <div class="error" *ngIf="f?.['title']?.errors?.['minlength']">
+          Field minlength should be 10 characters at a minimum
+        </div>
+      </div>      
+      <label for="description">Description</label>      
+      <textarea id="description" name="description" rows="7" formControlName="description" [ngModel]="task.description"></textarea>
+      <div class="error" *ngIf="f?.['description']?.invalid">
+        <div class="error" *ngIf="f?.['description']?.errors?.['required']">
+          Field required
+        </div>        
+      </div>
+    </div>
+    <div class="column-form">
+      <label for="status">Status</label>      
+      <select formControlName="status" (change)="onStatusChange($event)" [ngModel]="task.status">        
+        <option *ngFor="let status of statusList" [ngValue]="status">{{status}}</option>
+      </select>
+      <div class="error" *ngIf="f?.['status']?.invalid">
+        <div class="error" *ngIf="f?.['status']?.errors?.['required']">
+          Field required
+        </div>        
+      </div>
+      <label for="raisedBy">Raised By</label>      
+      <input type="text" id="raisedBy" name="raisedBy" formControlName="raisedBy" [ngModel]="task.raisedBy">
+      <div class="error" *ngIf="f?.['raisedBy']?.invalid">
+        <div class="error" *ngIf="f?.['raisedBy']?.errors?.['required']">
+          Field required
+        </div>        
+      </div>
+      <label for="assignee">Assignee</label>
+      <input type="text" id="assignee" name="assignee" formControlName="assignee" [ngModel]="task.assignee">      
+      <label for="startDate">Start Date</label>
+      <input type="date" id="startDate" name="startDate" formControlName="startDate" [ngModel]="task.startDate">
+      <div class="error" *ngIf="f?.['startDate']?.invalid">
+        <div class="error" *ngIf="f?.['startDate']?.errors?.['required']">
+          Field required
+        </div>        
+      </div>      
+      <label for="endDate">End Date</label>      
+      <input type="date" id="endDate" name="endDate" formControlName="endDate" [ngModel]="task.endDate">
+      <div class="error" *ngIf="f?.['endDate']?.invalid">
+        <div class="error" *ngIf="f?.['endDate']?.errors?.['required']">
+          Field required
+        </div>        
+      </div>
+      <button>Submit</button>
+    </div>    
+  </form>
+</div>

@@ -8,7 +8,7 @@ namespace TaskTrackerService.Controllers
     [Route("[controller]")]
     public class TaskTrackerController : ControllerBase
     {
-        private readonly TaskTrackerDb _db = new TaskTrackerDb("Data Source=.;Initial Catalog=TaskTracker;Integrated Security=True;");
+        private readonly TaskTrackerDb _db = new TaskTrackerDb("Data Source=DADDYDESKTOP\\SQLEXPRESS;Initial Catalog=TaskTracker;Integrated Security=True;");
 
         [HttpGet(Name = "GetTaskModel")]
         public IEnumerable<TaskModel> Get()

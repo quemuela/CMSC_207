@@ -27,9 +27,9 @@ namespace TaskTrackerService.Model
 
         private void CommonCommand(TaskModel taskModel, string commandString, bool update)
         {
-            using (var connectrion = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(_connectionString))
             {
-                using (var command = new SqlCommand(commandString, connectrion))
+                using (var command = new SqlCommand(commandString, connection))
                 {
                     if (!update)
                     {
@@ -43,9 +43,9 @@ namespace TaskTrackerService.Model
                     command.Parameters.Add(new SqlParameter("@endDate", taskModel.EndDate));
                     command.Parameters.Add(new SqlParameter("@status", taskModel.Status));
 
-                    connectrion.Open();
+                    connection.Open();
                     command.ExecuteNonQuery();
-                    connectrion.Close();
+                    connection.Close();
                 }
             }
         }
@@ -63,12 +63,12 @@ namespace TaskTrackerService.Model
         public IEnumerable<TaskModel> GetAllTasks()
         {
             var resultTasks = new List<TaskModel>();
-            using (var connectrion = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(_connectionString))
             {
-                using (var command = new SqlCommand(GetAllTasksCommand, connectrion))
+                using (var command = new SqlCommand(GetAllTasksCommand, connection))
                 {
 
-                    connectrion.Open();
+                    connection.Open();
                     var reader = command.ExecuteReader();
                     if (reader.HasRows)
                     {
@@ -79,7 +79,7 @@ namespace TaskTrackerService.Model
                         }
                     }
                     reader.Close();
-                    connectrion.Close();
+                    connection.Close();
                 }
             }
             return resultTasks;

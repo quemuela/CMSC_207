@@ -10,5 +10,6 @@
         string Assignee { get; }
         string StartDate { get; }
         string EndDate { get; }
+        string Sprint { get; }
     }
 }

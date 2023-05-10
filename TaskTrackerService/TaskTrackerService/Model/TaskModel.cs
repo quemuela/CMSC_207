@@ -2,7 +2,7 @@
 {
     public class TaskModel : ITaskModel
     {
-        public TaskModel(int id, string title, string description, string status, string raisedBy, string assignee, string startDate, string endDate)
+        public TaskModel(int id, string title, string description, string status, string raisedBy, string assignee, string startDate, string endDate, string sprint)
         {
             Id = id;
             Title = title;
@@ -12,6 +12,7 @@
             Assignee = assignee;
             StartDate = startDate;
             EndDate = endDate;
+            Sprint = sprint;
         }
 
         public int Id { get; }
@@ -29,5 +30,7 @@
         public string StartDate { get; }
 
         public string EndDate { get; }
+
+        public string Sprint { get; }
     }
 }

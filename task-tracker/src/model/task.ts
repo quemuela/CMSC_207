@@ -7,4 +7,5 @@ export interface Task {
     assignee: string;
     startDate: string;
     endDate: string;
+    sprint: string;
 }

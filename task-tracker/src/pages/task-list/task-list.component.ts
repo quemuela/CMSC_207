@@ -49,7 +49,8 @@ export class TaskListComponent implements OnInit {
     raisedBy: "",
     assignee: "",
     startDate: "",
-    endDate:""
+    endDate:"",
+    sprint:""
    }; 
   }
 
